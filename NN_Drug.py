@@ -1,13 +1,25 @@
 import sys
 
-# data handling libraries
+# data handling
 import pandas as pd
 import numpy as np
+
+# data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import label_binarize
 from sklearn.preprocessing import MinMaxScaler
+
+# feature selection
+from sklearn.feature_selection import mutual_info_classif
+
+# classification
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 # neural building Libraries
 import tensorflow as tf
@@ -15,29 +27,37 @@ from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense
 
-# data visualization libraries
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-
-
+# performance metrics
+from sklearn.metrics import balanced_accuracy_score,f1_score,precision_score, recall_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import roc_curve,auc
+from sklearn.metrics import roc_auc_score
 
 def main():
     # storing the data
     dataframe=pd.read_csv(file)
 
-    # How to check the rows of your data. By placing a number within the () you can control how much you can see.
-    dataframe.head(50)
+    # let's check the number of samples and features
+    # note:the last column contain the labels. it is not considered as a feature
+
+    print(dataframe.shape)
+    g=[i for i in datanul if i>0]
+
+    print('columns with missing values:%d'%len(g))
 
     # Checking for any null values in our dataset
     dataframe.isnull().sum()
 
     # Dropping The rows that have the null values so our data may be accurate as possible
-    dataframe = dataframe.dropna(axis=0, how = "any", thresh=None, inplace=False)
+    dataframe = dataframe.dropna(axis=0, how = "any", inplace=False)
     dataframe
 
     # Checking if the Null Values have been dropped
     dataframe.isnull().any()
+
 
     dataframe["Drug Name"].value_counts()
 
@@ -47,27 +67,32 @@ def main():
     X=dataframe[["Drug ID"]].values
     y= dataframe[["IC50"]].values
 
-    #let's encode target labels (y) with values between 0 and n_classes-1.
-    # we will be using LabelEncoder to perform the encoding
+    #Encode labels
+    #The labels for this data are categorical and we therefore have to convert them to numeric forms. 
+    #This is referred to as encoding. Machine learning models usually require input data to be in numeric forms.
     label_encoder=LabelEncoder()
-    label_encoder.fit(y)
-    y=label_encoder.transform(y)
+    label_encoder.fit(X)
+    y=label_encoder.transform(X)
     labels=label_encoder.classes_
-    classes=np.unique(y)
-    nclasses=np.unique(y).shape[0]
+    classes=np.unique(X)
+    nclasses=np.unique(X).shape[0]
+    nclasses
 
     # split data into training,validation and test sets
 
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.8)
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.8,random_state=1)
 
     # split the training set into two (training and validation)
     X_train, X_val, y_train, y_val = train_test_split(X_train,y_train,test_size=0.8)
+
+    #Data Normalization
+    #Data normalization is done so the values are in the same range to improve model performance and avoid bias.
 
     min_max_scaler=MinMaxScaler()
     X_train=min_max_scaler.fit_transform(X_train)
     X_val=min_max_scaler.fit_transform(X_val)
     X_test=min_max_scaler.fit_transform(X_test)
-
+    
     # define model
     model = Sequential()
 
@@ -85,6 +110,11 @@ def main():
 
     model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(), optimizer=opt_adam, metrics=[keras.metrics.SparseCategoricalAccuracy()])
 
+    # fit the model to the training data
+    # the higher the epoch value the higher the accuracy but the longer it takes to execute. 
+    # An epoch means training the neural network with all the training data for one cycle. 
+    # In an epoch, we use all of the data exactly once. A forward pass and a backward pass together are counted as one pass: 
+    # An epoch is made up of one or more batches, where we use a part of the dataset to train the neural network.
     history = model.fit(X_train, y_train, validation_data=(X_val, y_val), batch_size=30,epochs=32, verbose=1)
 
     predictions = model.predict(X_test)
