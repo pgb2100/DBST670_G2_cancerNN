@@ -30,3 +30,12 @@ ex) python3 NN_Drug.py dataset_file.csv gene_expression.csv
 | 0 | Camptothecin | 1003 | TE-5 | 735784 | ESCA | aero_digestive_tract | oesophagus | -2.555310782 | 0.834075918 | 0.1 | 0.087242117 | -0.161952499 |
 | 1 | Camptothecin | 1003 | EC-GI-10 | 753555 | ESCA | aero_digestive_tract | oesophagus | -3.125664052 | 0.804941689 | 0.1 | 0.082367836 | -0.472096346 |
 | 2 | Camptothecin | 1003 | HCE-4 | 753559 | ESCA | aero_digestive_tract | oesophagus | -3.536140073 | 0.77867008 | 0.1 | 0.087080221 | -0.695302943 |
+
+#### ComboData.csv on Rscript
+| Drug ID | Cosmic ID | IC50 | A1CF | ... | ZRANB3 | ZSCAN1 | ZSCAN18 | ZSCAN5B |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 1003 | 906800 | 2 | 0 | ... | 0 | 0 | 0 | 0 |
+| 1004 | 906800 | 2 | 0 | ... | 0 | 0 | 0 | 0 |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| 1005 | 906800 | 1 | 0 | ... | 0 | 0 | 0 | 0 |
+| 1006 | 906800 | 2 | 0 | ... | 0 | 0 | 0 | 0 |
