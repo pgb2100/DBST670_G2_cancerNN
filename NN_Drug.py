@@ -167,10 +167,9 @@ def main():
     plt.clf()
     df['gene_1000'].plot(kind='hist')
     df['IC50'].plot(kind='hist')
-    plt.savefig("data_histogram")
+    plt.savefig("data_histogram.png")
 
 
 if __name__ == '__main__':
-    # read data directly from my home computer or GDRIVE
     file = sys.argv[1]
     main()
