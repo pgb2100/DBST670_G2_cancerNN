@@ -42,6 +42,7 @@ ex) Rscript CancerNN.R ComboData.csv
 
 #### dataset_gene_expression.csv
  - combind dataset_file.csv and gene_expression.csv
+ 
 | Drug Name | IC50 | Cell Line Name | TCGA Classification | Tissue | Tissue Sub-type | AUC | gene_5 | gene_6 | ... | gene_7992 | gene_7998 | gene_7999 | gene_8000 | Cancer_Type |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 0 | | Erlotinib | -3.130315 | NCI-H1648 | LUAD | lung | lung_NSCLC_adenocarcinoma | 0.349972 | 0 | ... | 7.841923 | 10.426789 | 6.26948 | 1.789228 | LUAD |
@@ -56,6 +57,7 @@ ex) Rscript CancerNN.R ComboData.csv
 
 #### ComboData.csv on Rscript
  - this dataset can find from dataset R_NN Files_20221029.zip(combine Hotspot_Mutations.csv and PANCANCER_IC_Wed.csv through CombineICandGF.py)
+ 
 | Drug ID | Cosmic ID | IC50 | A1CF | ... | ZRANB3 | ZSCAN1 | ZSCAN18 | ZSCAN5B |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 1003 | 906800 | 2 | 0 | ... | 0 | 0 | 0 | 0 |
