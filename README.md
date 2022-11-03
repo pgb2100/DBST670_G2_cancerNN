@@ -16,7 +16,7 @@ The drug with the lowest IC50 index is the drug that has the highest efficiency.
  - caret
 
 ### Run the  Python script
-ex) python3 NN_Drug.py dataset_file.csv gene_expression.csv
+ex) python3 NN_Drug.py dataset_gene_expression.csv
 
 ### Run the R scrip
 ex) Rscript CancerNN.R ComboData.csv
@@ -40,6 +40,7 @@ ex) Rscript CancerNN.R ComboData.csv
 | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 #### ComboData.csv on Rscript
+ - this dataset can find from dataset R_NN Files_20221029.zip
 | Drug ID | Cosmic ID | IC50 | A1CF | ... | ZRANB3 | ZSCAN1 | ZSCAN18 | ZSCAN5B |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 1003 | 906800 | 2 | 0 | ... | 0 | 0 | 0 | 0 |
