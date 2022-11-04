@@ -41,7 +41,7 @@ ex) Rscript CancerNN.R ComboData.csv
 | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 #### dataset_gene_expression.csv
- - combind dataset_file.csv and gene_expression.csv
+ - combind dataset_file.csv and gene_expression.csv (PATH: dataset/M_LUAD_.zip)
  
 | Drug Name | IC50 | Cell Line Name | TCGA Classification | Tissue | Tissue Sub-type | AUC | gene_5 | gene_6 | ... | gene_7992 | gene_7998 | gene_7999 | gene_8000 | Cancer_Type |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
